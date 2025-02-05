@@ -1,50 +1,69 @@
-# React + TypeScript + Vite
+# Content Management API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Content Manager Logo](frontend.png)
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A Node.js Express application for managing user content with authentication and sharing features.
 
-## Expanding the ESLint configuration
+## Technologies
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Express.js
+- Mongoose
+- TypeScript
+- JSON Web Token (JWT) for authentication
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- User authentication
+- CRUD operations for content
+- Content sharing via generated hash links
+- User-specific content management
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Setup
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Prerequisites
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Node.js
+- MongoDB
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Set up environment variables
+4. Run the application: `npm start`
+
+## API Endpoints
+
+### Authentication
+
+- `POST /api/v1/auth/register`: User registration
+- `POST /api/v1/auth/login`: User login
+
+### Content Management
+
+- `GET /api/v1/content`: Retrieve user's content
+- `POST /api/v1/content`: Create new content
+- `PUT /api/v1/content/:id`: Update existing content
+- `DELETE /api/v1/posts`: Delete content
+
+### Content Sharing
+
+- `GET /api/v1/brain/share`: Generate/manage share link
+- `GET /api/v1/brain/share/:share`: Access shared content
+
+## Environment Variables
+
+- `CONNECTION_STRING`: MongoDB connection string
+- `APP_PORT`: Server port (default: 3000)
+
+## Security
+
+- JWT-based authentication
+- User-specific content access
+- Hash-based content sharing
+
+## License
+
+[Add your license information]
